@@ -333,3 +333,11 @@ Use the following command to open a new file called info.php within your documen
 Next, use the following command into the new file to get information about your server:
 
 
+```
+  ?php
+  phpinfo();
+  
+  ```
+
+  
+
