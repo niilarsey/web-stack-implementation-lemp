@@ -331,23 +331,24 @@ Use the following command to open a new file called info.php within your documen
 ```
 Next, use the following command into the new file to get information about your server:
 ```
- <?php
- phpinfo();
+  ?php
+  phpinfo();
 ```
- ![](./images/phpimage1.png)
+  ![](./images/phpimage1.png)
 
 Navigate to your web browser and access this page using the URL below. Remember to replace the anchor tabs provided with the public IP address:
-
+```
  http://<VM-Public-IP-address>/info.php
-
+```
 You should see web page like this:
 
- ![](./images/testingnginxwphpimage1.png)
+![](./images/testingnginxwphpimage1.png)
 
 
 Once you have viewed the web page, it is best practice to remove the file you created because it contains sensitive information about your PHP environment and your Ubuntu server. Use the following command:
-
- $ sudo rm /var/www/projectLEMP/info.php
+```
+$ sudo rm /var/www/projectLEMP/info.php
+```
 
 # Retrieving data from MySQL database with PHP
 
@@ -357,36 +358,36 @@ Let's begin by creating database named example_database and then creating a user
 
 First and foremost, connect to the MySQL as the root user using the following command:
 ```
-  $ sudo mysql
+$ sudo mysql
 ```
 Next, create a new database using the following command:
-
- mysql> CREATE DATABASE `example_database`;
-
+```
+mysql> CREATE DATABASE `example_database`;
+```
 Great! Next, let's create an example_user that has full privileges on the database. The default authentication method will be mysql_native_password. Please note: for this example, the password will be password, however please replace this field with a more secure password.
-
-  mysql>  CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
-
+```
+mysql>  CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+```
 Next, we will grant the user permissions over the example_database, while restricting the user from creating or modifying other databases on the server:
-
- mysql> GRANT ALL ON example_database.* TO 'example_user'@'%';
-
+```
+mysql> GRANT ALL ON example_database.* TO 'example_user'@'%';
+```
 Exit the MySQL shell using the following command:
-
- mysql> exit
-
+```
+mysql> exit
+```
 ![](./images/retrievingdatafrommysqlwPHP.png)
 
 Next, we can test whether the example_user has the permissions by logging back into to the MySQL console using the following credentials:
-
- $ mysql -u example_user -p
-
+```
+$ mysql -u example_user -p
+```
 You may have noticed the -p flag in this command. This will prompt you for the password that was used when creating the example_user user.
 
 Once you have logged into the MySQL console, confirm that you have access to the example_database database using the following command:
-
- mysql> SHOW DATABASES;
-
+```
+mysql> SHOW DATABASES;
+```
 
 ![](./images/showdatabse1.png)
 
@@ -394,38 +395,38 @@ Once you have logged into the MySQL console, confirm that you have access to the
 
 Great! Now let's create a test table called todo_list. Use the following:
 ```
- mysql> CREATE TABLE example_database.todo_list (
+mysql> CREATE TABLE example_database.todo_list (
     item_id INT AUTO_INCREMENT,
     content VARCHAR(255),
     PRIMARY KEY(item_id)
- );
+);
 ```
 Next, let's add more roles in the test table. I suggest repeating the following command a few times using different VALUES each time:
-
+```
 mysql> INSERT INTO example_database.todo_list (content) VALUES ("My first important item");
-
+```
 In order to confirm whether the data was successfully saved to your table, use the following:
-
+```
 mysql>  SELECT * FROM example_database.todo_list;
-
+```
 You should see something like this:
 
 Once you have completed this task, exit the MySQL console:
-
+```
 mysql> exit
+```
 
-
- ![](./images/showdatabse1.png)
+![](./images/showdatabse1.png)
 
 Great! Now we have successfully created a PHP script which we can use to connect to MySQL, and then query our content.
 
 Next, let's create a new PHP file in your custom web root directory using nano:
-
+```
 $ nano /var/www/projectLEMP/todo_list.php
-
+```
 Next, let's connect to the MySQL database and query for the content of the todo_list table in list format. Copy and paste the following text into the nano editor:
 ```
- <?php
+<?php
  $user = "example_user";
  $password = "password";
  $database = "example_database";
@@ -445,7 +446,7 @@ try {
 ```
 
 
- ![](./images/GNUnano2.png)
+![](./images/GNUnano2.png)
 
 
 Once you have finished, save and close the file. You can access this page in your web browser by visiting the public IP address! Remember to replace the anchor tabs in the following URL:
