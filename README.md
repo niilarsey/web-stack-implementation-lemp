@@ -399,3 +399,71 @@ mysql> SHOW DATABASES;
 ```
 
 ![](./images/showdatabse1.png)
+
+
+Great! Now let's create a test table called todo_list. Use the following:
+```
+mysql> CREATE TABLE example_database.todo_list (
+    item_id INT AUTO_INCREMENT,
+    content VARCHAR(255),
+    PRIMARY KEY(item_id)
+);
+```
+Next, let's add more roles in the test table. I suggest repeating the following command a few times using different VALUES each time:
+```
+mysql> INSERT INTO example_database.todo_list (content) VALUES ("My first important item");
+```
+In order to confirm whether the data was successfully saved to your table, use the following:
+```
+mysql>  SELECT * FROM example_database.todo_list;
+```
+You should see something like this:
+
+Once you have completed this task, exit the MySQL console:
+```
+mysql> exit
+```
+
+![](./images/showdatabse1.png)
+
+Great! Now we have successfully created a PHP script which we can use to connect to MySQL, and then query our content.
+
+Next, let's create a new PHP file in your custom web root directory using nano:
+```
+$ nano /var/www/projectLEMP/todo_list.php
+```
+Next, let's connect to the MySQL database and query for the content of the todo_list table in list format. Copy and paste the following text into the nano editor:
+```
+<?php
+ $user = "example_user";
+ $password = "password";
+ $database = "example_database";
+ $table = "todo_list";
+
+try {
+  $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+  echo "<h2>TODO</h2><ol>";
+  foreach($db->query("SELECT content FROM $table") as $row) {
+    echo "<li>" . $row['content'] . "</li>";
+  }
+  echo "</ol>";
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+```
+
+
+![](./images/GNUnano2.png)
+
+
+Once you have finished, save and close the file. You can access this page in your web browser by visiting the public IP address! Remember to replace the anchor tabs in the following URL:
+```
+ http://<VM-Public-IP-address>/todo_list.php
+```
+
+You should see something like this:
+
+![](./images/finalTODOpageimage1.png)
+
+Congratulations! You have completed the web stack implementation project using LEMP stack in Azure
