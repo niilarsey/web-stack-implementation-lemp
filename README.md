@@ -449,9 +449,9 @@ try {
 
 
 Once you have finished, save and close the file. You can access this page in your web browser by visiting the public IP address! Remember to replace the anchor tabs in the following URL:
-
+```
  http://<VM-Public-IP-address>/todo_list.php
-
+```
 
 You should see something like this:
 
