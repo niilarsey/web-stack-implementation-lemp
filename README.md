@@ -330,3 +330,6 @@ Use the following command to open a new file called info.php within your documen
  $ nano /var/www/projectLEMP/info.php
 ```
 
+Next, use the following command into the new file to get information about your server:
+
+
