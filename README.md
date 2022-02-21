@@ -331,10 +331,10 @@ $ nano /var/www/projectLEMP/info.php
 
 Next, use the following command into the new file to get information about your server:
 
-<?php
-phpinfo();
+ <?php
+ phpinfo();
 
-![](./images/phpimage1.png)
+# ![](./images/phpimage1.png)
 
 Navigate to your web browser and access this page using the URL below. Remember to replace the anchor tabs provided with the public IP address:
 
