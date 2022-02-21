@@ -352,3 +352,50 @@ You should see web page like this:
 
 
 Once you have viewed the web page, it is best practice to remove the file you created because it contains sensitive information about your PHP environment and your Ubuntu server. Use the following command:
+
+
+ 
+```
+$ sudo rm /var/www/projectLEMP/info.php
+```
+
+# Retrieving data from MySQL database with PHP
+
+Great job making it this far! In this final section, we will create a test database using a simple “To do list” and then configure it's accessibility. This will enable the Nginx website to query data from the database and display it.
+
+Let's begin by creating database named example_database and then creating a user named example_user.
+
+First and foremost, connect to the MySQL as the root user using the following command:
+```
+$ sudo mysql
+```
+Next, create a new database using the following command:
+```
+mysql> CREATE DATABASE `example_database`;
+```
+Great! Next, let's create an example_user that has full privileges on the database. The default authentication method will be mysql_native_password. Please note: for this example, the password will be password, however please replace this field with a more secure password.
+```
+mysql>  CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+```
+Next, we will grant the user permissions over the example_database, while restricting the user from creating or modifying other databases on the server:
+```
+mysql> GRANT ALL ON example_database.* TO 'example_user'@'%';
+```
+Exit the MySQL shell using the following command:
+```
+mysql> exit
+```
+![](./images/retrievingdatafrommysqlwPHP.png)
+
+Next, we can test whether the example_user has the permissions by logging back into to the MySQL console using the following credentials:
+```
+$ mysql -u example_user -p
+```
+You may have noticed the -p flag in this command. This will prompt you for the password that was used when creating the example_user user.
+
+Once you have logged into the MySQL console, confirm that you have access to the example_database database using the following command:
+```
+mysql> SHOW DATABASES;
+```
+
+![](./images/showdatabse1.png)
