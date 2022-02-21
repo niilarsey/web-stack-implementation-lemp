@@ -339,5 +339,16 @@ Next, use the following command into the new file to get information about your 
   
   ```
 
-  
 
+![](./images/phpimage1.png)
+
+Navigate to your web browser and access this page using the URL below. Remember to replace the anchor tabs provided with the public IP address:
+```
+ http://<VM-Public-IP-address>/info.php
+```
+You should see web page like this:
+
+![](./images/testingnginxwphpimage1.png)
+
+
+Once you have viewed the web page, it is best practice to remove the file you created because it contains sensitive information about your PHP environment and your Ubuntu server. Use the following command:
