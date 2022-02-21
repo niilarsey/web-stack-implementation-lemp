@@ -326,15 +326,15 @@ Congrats! Our LEMP stack is now fully configured!
 Excellent work! Now, we will continue to our next step, which is to create a PHP script and then test whether Nginx can manage the .php files from our newly configured website.
 
 Use the following command to open a new file called info.php within your document root:
-
+```
  $ nano /var/www/projectLEMP/info.php
-
+```
 Next, use the following command into the new file to get information about your server:
-
+```
  <?php
  phpinfo();
-
-# ![](./images/phpimage1.png)
+```
+ ![](./images/phpimage1.png)
 
 Navigate to your web browser and access this page using the URL below. Remember to replace the anchor tabs provided with the public IP address:
 
@@ -356,9 +356,9 @@ Great job making it this far! In this final section, we will create a test datab
 Let's begin by creating database named example_database and then creating a user named example_user.
 
 First and foremost, connect to the MySQL as the root user using the following command:
-
+```
   $ sudo mysql
-
+```
 Next, create a new database using the following command:
 
  mysql> CREATE DATABASE `example_database`;
@@ -393,13 +393,13 @@ Once you have logged into the MySQL console, confirm that you have access to the
 
 
 Great! Now let's create a test table called todo_list. Use the following:
-
+```
  mysql> CREATE TABLE example_database.todo_list (
     item_id INT AUTO_INCREMENT,
     content VARCHAR(255),
     PRIMARY KEY(item_id)
  );
-
+```
 Next, let's add more roles in the test table. I suggest repeating the following command a few times using different VALUES each time:
 
 mysql> INSERT INTO example_database.todo_list (content) VALUES ("My first important item");
@@ -424,7 +424,7 @@ Next, let's create a new PHP file in your custom web root directory using nano:
 $ nano /var/www/projectLEMP/todo_list.php
 
 Next, let's connect to the MySQL database and query for the content of the todo_list table in list format. Copy and paste the following text into the nano editor:
-
+```
  <?php
  $user = "example_user";
  $password = "password";
@@ -442,7 +442,7 @@ try {
     print "Error!: " . $e->getMessage() . "<br/>";
     die();
 }
-
+```
 
 
  ![](./images/GNUnano2.png)
@@ -450,7 +450,7 @@ try {
 
 Once you have finished, save and close the file. You can access this page in your web browser by visiting the public IP address! Remember to replace the anchor tabs in the following URL:
 
-http://<VM-Public-IP-address>/todo_list.php
+ http://<VM-Public-IP-address>/todo_list.php
 
 
 You should see something like this:
